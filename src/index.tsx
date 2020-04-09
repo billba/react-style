@@ -1,7 +1,7 @@
-import { Provider } from './redux';
-import { Thing } from './components/Thing';
+import {Provider} from './redux';
+import {Thing} from './components/Thing';
 import React from 'react';
-import { render } from 'react-dom';
+import {render} from 'react-dom';
 
 const App = () => <Provider>
     <Thing/>

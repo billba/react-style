@@ -1,18 +1,12 @@
-import { Reducer } from '.';
+import {Reducer} from '../redux';
 
 interface FooState {
   thing: number,
   greeting: string,
 }
 
-export type FooAction = 
-| {
-  type: 'ChangeGreeting',
-  greeting: string,
-}
-  
-export const foo: Reducer<FooState> = (
-  foo = { thing: 123, greeting: 'hello' },
+const foo: Reducer<FooState> = (
+  foo = {thing: 123, greeting: 'hello'},
   action,
 ) => {
   switch (action.type) {
@@ -25,3 +19,5 @@ export const foo: Reducer<FooState> = (
       return foo;
   }
 }
+
+export default foo;

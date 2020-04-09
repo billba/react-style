@@ -1,19 +1,11 @@
-import { Reducer } from '.';
-
-interface Location {
-  name: string;
-}
+import {Reducer} from '../redux';
+import {Location} from '../actions/location';
 
 interface BarState {
   location: Location;
 }
 
-export type BarAction =
-| {
-  type: 'ToggleLocation',
-}
-
-export const bar: Reducer<BarState> = (
+const bar: Reducer<BarState> = (
   bar = {
     location: {
       name: 'world',
@@ -33,3 +25,5 @@ export const bar: Reducer<BarState> = (
       return bar;
   }
 }
+
+export default bar;

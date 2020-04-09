@@ -1,20 +1,9 @@
-import { foo, FooAction } from './foo';
-import { bar, BarAction } from './bar';
-import { Dispatch, Reducer as _Reducer, createStore, combineReducers } from 'redux';
-import { useDispatch as _useDispatch, useSelector as _useSelector, Provider as _Provider } from 'react-redux';
-import { createElement } from 'react';
-export { shallowEqual } from 'react-redux';
+import {Dispatch, Reducer as _Reducer, createStore, combineReducers} from 'redux';
+import {useDispatch as _useDispatch, useSelector as _useSelector, Provider as _Provider} from 'react-redux';
+import {createElement} from 'react';
 
-export type AppAction =
-| FooAction
-| BarAction
-// add new actions here
-
-const allReducers = {
-  foo,
-  bar,
-   // add new reducers here
-}
+import {AppAction} from './actions';
+import {allReducers} from './reducers';
 
 export type UseDispatch = Dispatch<AppAction>;
 
@@ -39,3 +28,6 @@ const store = createStore(
 
 export const Provider = ({children}: React.PropsWithChildren<{}> ) =>
   createElement(_Provider, {store}, children);
+
+export {allReducers, AppAction}
+export {shallowEqual} from 'react-redux';

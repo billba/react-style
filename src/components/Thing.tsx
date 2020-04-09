@@ -1,5 +1,5 @@
-import { useDispatch, useSelector, shallowEqual } from "../redux";
-import React, { useCallback } from "react";
+import {useDispatch, useSelector, shallowEqual} from "../redux";
+import React, {useCallback} from "react";
 import {PureThing} from './PureThing';
 
 export const Thing = () => {
