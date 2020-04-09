@@ -10,15 +10,15 @@ export type AppAction =
 | BarAction
 // add new actions here
 
+const allReducers = {
+  foo,
+  bar,
+   // add new reducers here
+}
+
 export type UseDispatch = Dispatch<AppAction>;
 
 export const useDispatch = () => _useDispatch<Dispatch<AppAction>>();
-
-const allReducers = {
-    foo,
-    bar,
-    // add new reducers here
-}
 
 type StateFromReducers<T> = {
   [K in keyof T]: T[K] extends (...args: any) => infer R ? R : never

@@ -1,34 +1,33 @@
 import { Reducer } from '.';
 
-interface BarThing {
-  aString: string;
+interface Location {
+  name: string;
 }
 
 interface BarState {
-  doodad: number,
-  barThing: BarThing;
+  location: Location;
 }
 
 export type BarAction =
 | {
-  type: 'DoAnotherThing',
-  barThing: BarThing,
+  type: 'ToggleLocation',
 }
 
 export const bar: Reducer<BarState> = (
   bar = {
-    doodad: 1,
-    barThing: {
-      aString: 'hey'
+    location: {
+      name: 'world',
     }
   },
   action,
 ) => {
   switch (action.type) {
-    case 'DoAnotherThing':
+    case 'ToggleLocation':
       return {
         ... bar,
-        barThing: action.barThing,
+        location: {
+          name: bar.location.name === "world" ? "Cleveland" : "world",
+        }
       }
     default:
       return bar;

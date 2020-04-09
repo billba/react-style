@@ -1,5 +1,5 @@
 import React from "react"
 
-export const PureThing = ({text}:{text: string}) => <div>
-    {text}
+export const PureThing = ({text, onClick}:{text: string, onClick: () => void}) => <div onClick={onClick}>
+  {text}
 </div>

@@ -1,24 +1,21 @@
 import { useDispatch, useSelector, shallowEqual } from "../redux";
-import React from "react";
+import React, { useCallback } from "react";
 import {PureThing} from './PureThing';
 
 export const Thing = () => {
-    const dispatch = useDispatch();
-    const stuff = useSelector(state => ({
-        doodad: state.bar.doodad,
-        a: state.foo.widget
-    }), shallowEqual);
+  const dispatch = useDispatch();
+  const {greeting, locationName} = useSelector(state => ({
+    greeting: state.foo.greeting,
+    locationName: state.bar.location.name,
+  }), shallowEqual);
 
-    dispatch({
-        type: 'DoAnotherThing',
-        barThing: {
-            aString: 'dog',
-        }
-    });
+  const onClick = useCallback(() => dispatch({
+    type: 'ToggleLocation',
+  }), []);
 
-    return <div>
-        { stuff.doodad }
-        <PureThing text={stuff.a}/>
-    </div>;
+  return <PureThing
+    text={`${greeting} ${locationName}`}
+    onClick={onClick}
+  />;
 }
 

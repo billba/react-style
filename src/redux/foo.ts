@@ -2,24 +2,24 @@ import { Reducer } from '.';
 
 interface FooState {
   thing: number,
-  widget: string,
+  greeting: string,
 }
 
 export type FooAction = 
 | {
-  type: 'AccomplishSomething',
-  thing: number,
+  type: 'ChangeGreeting',
+  greeting: string,
 }
   
 export const foo: Reducer<FooState> = (
-  foo = { thing: 123, widget: 'hello' },
+  foo = { thing: 123, greeting: 'hello' },
   action,
 ) => {
   switch (action.type) {
-    case 'AccomplishSomething':
+    case 'ChangeGreeting':
       return {
         ... foo,
-        thing: action.thing,
+        greeting: action.greeting,
       }
     default:
       return foo;
