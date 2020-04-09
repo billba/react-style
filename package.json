@@ -1,0 +1,33 @@
+{
+  "name": "react-style",
+  "version": "0.1.0",
+  "description": "opinionated style guide for a Redux/GraphQL react app",
+  "scripts": {
+    "watch": "webpack --progress",
+    "start": "webpack-dev-server --progress --host 0.0.0.0 --disable-host-check",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
+    "apollo-boost": "^0.4.4",
+    "apollo-cache-inmemory": "^1.6.5",
+    "graphql": "^14.5.3",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "react-redux": "7.1.1",
+    "redux": "4.0.4",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.2",
+    "@types/react-dom": "16.9.0",
+    "@types/react-redux": "7.1.2",
+    "awesome-typescript-loader": "5.2.1",
+    "typescript": "3.5.3",
+    "webpack": "4.39.2",
+    "webpack-cli": "3.3.7",
+    "webpack-dev-server": "3.8.0"
+  }
+}
