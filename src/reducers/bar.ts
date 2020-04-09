@@ -1,8 +1,27 @@
-import {Reducer} from '../redux';
+import {Reducer, Reducers, reduce} from '../redux';
 import {Location} from '../actions/location';
 
 interface BarState {
   location: Location;
+}
+
+const reducers: Reducers<BarState> = {
+  ToggleLocation: (bar, action) => ({
+    ... bar,
+    location: {
+      name: bar.location.name === "world" ? "Cleveland" : "world",
+    }
+  }),
+  /* Option B:
+  ToggleLocation(bar, action) {
+    return {
+      ... bar,
+      location: {
+        name: bar.location.name === "world" ? "Cleveland" : "world",
+      }
+    }
+  },
+  */
 }
 
 const bar: Reducer<BarState> = (
@@ -12,18 +31,6 @@ const bar: Reducer<BarState> = (
     }
   },
   action,
-) => {
-  switch (action.type) {
-    case 'ToggleLocation':
-      return {
-        ... bar,
-        location: {
-          name: bar.location.name === "world" ? "Cleveland" : "world",
-        }
-      }
-    default:
-      return bar;
-  }
-}
+) => reduce(reducers, bar, action);
 
 export default bar;

@@ -22,6 +22,15 @@ export const useSelector = <TSelected>(
 
 export type Reducer<S> = _Reducer<S, AppAction>;
 
+export type Reducers<S> = Partial<{
+  [K in AppAction['type']]: (state: S, action: AppAction) => S;
+}>
+
+export function reduce<S>(foo: Reducers<S>, state: S, action: AppAction) {
+  const f = foo[action.type];
+  return f ? f(state, action) : state;
+}
+
 const store = createStore(
   combineReducers(allReducers)
 );
