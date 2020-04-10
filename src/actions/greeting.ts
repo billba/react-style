@@ -4,6 +4,7 @@ declare module "actions" {
     'ChangeGreeting': {
       greeting: string,
     },
+    // add new actions here
   }
 
 }

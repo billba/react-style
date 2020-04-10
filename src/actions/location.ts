@@ -10,6 +10,7 @@ declare module "actions" {
     'ChangeLocation': {
       location: Location,
     },
+    // add new actions here
   }
 
 }
