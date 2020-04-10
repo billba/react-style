@@ -8,7 +8,7 @@ export default createReducer<{
       name: 'world',
     }
   }), {
-    ToggleLocation: (bar, action) => ({
+    'ToggleLocation': (bar, action) => ({
       ... bar,
       location: {
         name: bar.location.name === "world" ? "Cleveland" : "world",

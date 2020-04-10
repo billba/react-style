@@ -40,8 +40,6 @@ You are not limited to `switch`-based reducers. Helpers make it easy to provide 
 
 * [bar-switchless.ts](./src/reducers/bar-switchless.ts) use the `Reducers` and `reduce` helpers to avoid `switch`. Note that the type of `action` in each single-action reducer is correctly narrowed to the action type in question.
 
-* [bar-switchless-alternate.ts](./src/reducers/bar-switchless-alternate.ts) does the same, using a functional syntax for the single-action reducer versus the lambda syntax shown in `bar-switchless.ts`.
-
 * [bar-createReducer.ts](./src/reducers/bar-createReducer.ts) uses the `createReducer` higher-order function for a more functional approach to `bar-switchless.ts`.
 
 * Finally, [bar-most-concise.ts](./src/reducers/bar-most-concise.ts) omits local types and helpers to produce the most concise possible version of the `bar` reducer.
