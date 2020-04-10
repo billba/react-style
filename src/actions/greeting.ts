@@ -1,9 +1,9 @@
-export type GreetingAction =
-  {
-  'ChangeGreeting': {
-    greeting: string,
-  },
-  'ToggleLocation': {
-    dog: number,
+declare module "actions" {
+
+  export interface _AppAction {
+    'ChangeGreeting': {
+      greeting: string,
+    },
   }
+
 }
