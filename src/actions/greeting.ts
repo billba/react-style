@@ -1,6 +1,9 @@
-export type GreetingAction = 
-| {
-  type: 'ChangeGreeting',
-  greeting: string,
+export type GreetingAction =
+  {
+  'ChangeGreeting': {
+    greeting: string,
+  },
+  'ToggleLocation': {
+    dog: number,
+  }
 }
-  

@@ -3,10 +3,11 @@ export interface Location {
 }
 
 export type LocationAction =
-| {
-  type: 'ToggleLocation',
-}
-| {
-  type: 'ChangeLocation',
-  location: Location,
+  {
+  'ToggleLocation': {
+    dog: number,
+  },
+  'ChangeLocation': {
+    location: Location,
+  },
 }
