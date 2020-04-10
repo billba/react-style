@@ -46,7 +46,7 @@ You are not limited to `switch`-based reducers. Helpers make it easy to provide 
 
 All these versions of `bar.ts` are functionally equivalent.
 
-[location.ts](./src/actions/location.ts) is a typical actions file. It exports `LocationAction` as well as the helper type `Location` which is used in `bar.ts` above. If `Location` were used elsewhere in the app it might make more sense to put it somewhere else. An actions file should be just for types used in actions and reducers.
+[location.ts](./src/actions/location.ts) is a typical actions file. It defines a group of actions as well as the helper type `Location` which is used in `bar.ts` above. If `Location` were used elsewhere in the app it might make more sense to put it somewhere else. An actions file should be just for types used in actions and reducers.
 
 [redux.ts](./src/redux.ts) is the opinionated source of all things Redux for this project. It creates a store and exports:
 * `AppAction` and `AppState`
@@ -95,7 +95,7 @@ interface _AppAction {
 
 Downstream we do some typescript magic to convert the latter to the former.
 
-Now if you try to add a different `'ActionName'` to any action group you will get an error.
+Now if you try to add a different `'ActionName'` to any group of actions you will get an error. There is nothing we can do if you add an identically typed `'ActionName'`, however, so try not to do that.
 
 #### `AppAction`: the Single Action Type
 
