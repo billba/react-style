@@ -110,9 +110,9 @@ It is the nature of Redux that every top-level reducer will handle every action,
 
 `redux.ts` exports `AppAction` which is a union of all actions. Use this as the type of the `action` paremeter for your reducer, or save a little code by using the `Reducer` or `createReducer` helper.
 
-#### Reducer Composition
+#### Splitting Reducers up
 
-If your reducer's state gets complex it can be helpful to break parts into smaller reducers. These non-top-level reducers can share a file with their parent reducer, or be `import`ed from their own files. They can also be correctly typed using the `Reducer` or `createReducer` helpers.
+If your reducer's state gets complex it can be helpful to split the logic up as shown in the [Redux tutorial](https://redux.js.org/basics/reducers/#splitting-reducers). These non-top-level reducers can share a file with their parent reducer, or be `import`ed from their own files. They can also be correctly typed using the `Reducer` or `createReducer` helpers.
 
 #### Using `switch`
 
