@@ -64,6 +64,39 @@ All these versions of `bar.ts` are functionally equivalent.
 
 Actions go under `actions`, grouped in multiple files. Each file exports an action type which is a union of all the actions in that group. Although many actions are associated with a single reducer, some will be handled by multiple reducers, and so grouping them by reducer ultimately leads to confusion about how Redux works, as well as difficult typing and import patterns.
 
+Actions *could* be defined like so:
+
+```ts
+type AppActions = {
+  type: 'ActionName':
+  name: string,
+  age: number,
+}
+| {
+  type: 'AnotherActionName',
+  isSomething: boolean,
+  }
+} 
+```
+
+The problem with this approach is that there's no stopping you from accidentally adding two different actions with the same type name. So instead we do:
+
+```ts
+interface _AppAction {
+  'ActionName': {
+    name: string,
+    age: number,
+  },
+  'AnotherActionName': {
+    isSomething: boolean,
+  }
+} 
+```
+
+Downstream we do some typescript magic to convert the latter to the former.
+
+Now if you try to add a different `'ActionName'` to any action group you will get an error.
+
 #### `AppAction`: the Single Action Type
 
 When you add a new action group you need to import that type into `actions/index.ts` where it will be unioned into `AppAction`, which is ultimately exported by `redux.ts`
