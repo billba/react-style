@@ -22,7 +22,21 @@ src
   redux.ts
 ```
 
-[foo.ts](./src/reducers/foo.ts) and [bar.ts](./src/reducers/bar.ts) are typical reducer files. They each import `Reducer` from `../redux` and uses it to construct the reducer, which it exports default. `tar.ts` uses a `switch` approach, `bar.ts` uses a dictionary of single-action reducers.
+[foo.ts](./src/reducers/foo.ts) is a typical `switch`-based reducer file. It import `Reducer` from `../redux` and uses it to construct the reducer, which it exports default. An interface is created for the state type, but it isn't exported and typically would not need to be.
+
+[bar.ts](./src/reducers/bar.ts) is another `switch`-based reducer file. It imports a helper type from the [location.ts](./src/actions/location.ts) actions file.
+
+You are not limited to `switch` based reducers. Helpers make it easy to provide a dictionary of single-action reducers to make your code more readable:
+
+[bar-switchless.ts](./src/reducers/bar-switchless.ts) use the `Reducers` and `reduce` helpers to avoid `switch`. Note that the type of `action` in each single-action reducer is correctly narrowed to the action type in question.
+
+[bar-switchless-alternate.ts](./src/reducers/bar-switchless-alternate.ts) does the same, using a functional syntax for the single-action reducer versus the lambda syntax shown in `bar-switchless.ts`.
+
+[bar-createReducer.ts](./src/reducers/bar-createReducer.ts) uses the `createReducer` higher-order function for a more functional approach to `bar-switchless.ts`.
+
+Finally, [bar-most-concise.ts](./src/reducers/bar-most-concise.ts) omits local types and helpers to produce the most concise possible version of `bar.ts`.
+
+All these versions of `bar.ts` are functionally equivalent.
 
 [location.ts](./src/actions/location.ts) is a typical actions file. It exports `LocationAction` as well as the helper type `Location` which is used in `bar.ts` above. If `Location` were used elsewhere in the app it might make more sense to put it somewhere else. An actions file should be just for types used in actions and reducers.
 

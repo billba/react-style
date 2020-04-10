@@ -28,10 +28,13 @@ export type Reducers<S> = Partial<{
   [K in AppAction['type']]: (state: S, action: OneAction<AppAction, K>) => S;
 }>
 
-export function reduce<S>(reducers: Reducers<S>, state: S, action: AppAction) {
+export const reduce = <S>(reducers: Reducers<S>, state: S, action: AppAction) => {
   const reducer = reducers[action.type];
   return reducer ? reducer(state, action as any) : state;
 }
+
+export const createReducer = <S>(initState: () => S, reducers: Reducers<S>) =>
+  (state = initState(), action: AppAction) => reduce(reducers, state, action)
 
 const store = createStore(
   combineReducers(allReducers)

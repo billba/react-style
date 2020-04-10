@@ -5,6 +5,17 @@ interface BarState {
   location: Location;
 }
 
+const reducers: Reducers<BarState> = {
+  ToggleLocation(bar, action) {
+    return {
+      ... bar,
+      location: {
+        name: bar.location.name === "world" ? "Cleveland" : "world",
+      }
+    }
+  },
+}
+
 const bar: Reducer<BarState> = (
   bar = {
     location: {
@@ -12,18 +23,6 @@ const bar: Reducer<BarState> = (
     }
   },
   action,
-) => {
-  switch (action.type) {
-    case 'ToggleLocation':
-      return {
-        ... bar,
-        location: {
-          name: bar.location.name === "world" ? "Cleveland" : "world",
-        }
-      }
-    default:
-      return bar;
-  }
-}
+) => reduce(reducers, bar, action);
 
 export default bar;

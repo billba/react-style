@@ -6,7 +6,10 @@ interface FooState {
 }
 
 const foo: Reducer<FooState> = (
-  foo = {thing: 123, greeting: 'hello'},
+  foo = {
+    thing: 123,
+    greeting: 'hello'
+  },
   action,
 ) => {
   switch (action.type) {
