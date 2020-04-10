@@ -2,8 +2,12 @@ import {Dispatch, Reducer as _Reducer, createStore, combineReducers} from 'redux
 import {useDispatch as _useDispatch, useSelector as _useSelector, Provider as _Provider} from 'react-redux';
 import {createElement} from 'react';
 
-import {AppAction} from './actions';
+import {_AppAction} from 'actions';
 import {allReducers} from './reducers';
+
+type Typify<A> = A extends Record<infer T, any> ? T extends string ? { type: T } & A[T] : never : never;
+
+export type AppAction = Typify<_AppAction>;
 
 export type UseDispatch = Dispatch<AppAction>;
 
@@ -43,5 +47,5 @@ const store = createStore(
 export const Provider = ({children}: React.PropsWithChildren<{}> ) =>
   createElement(_Provider, {store}, children);
 
-export {allReducers, AppAction}
+export {allReducers}
 export {shallowEqual} from 'react-redux';

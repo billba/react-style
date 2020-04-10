@@ -4,7 +4,7 @@ export interface Location {
 
 declare module "actions" {
 
-  export interface _AppAction {
+  interface _AppAction {
     'ToggleLocation': {
     },
     'ChangeLocation': {
