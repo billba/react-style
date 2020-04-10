@@ -10,7 +10,7 @@ export type UseDispatch = Dispatch<AppAction>;
 export const useDispatch = () => _useDispatch<Dispatch<AppAction>>();
 
 type StateFromReducers<T> = {
-  [K in keyof T]: T[K] extends (...args: any) => infer R ? R : never
+  [K in keyof T]: T[K] extends (...args: any[]) => infer R ? R : never
 }
 
 export type AppState = StateFromReducers<typeof allReducers>;
