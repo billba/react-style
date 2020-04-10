@@ -22,13 +22,15 @@ export const useSelector = <TSelected>(
 
 export type Reducer<S> = _Reducer<S, AppAction>;
 
+type OneAction<A, K> = A extends { type: K } ? A: never;
+
 export type Reducers<S> = Partial<{
-  [K in AppAction['type']]: (state: S, action: AppAction) => S;
+  [K in AppAction['type']]: (state: S, action: OneAction<AppAction, K>) => S;
 }>
 
-export function reduce<S>(foo: Reducers<S>, state: S, action: AppAction) {
-  const f = foo[action.type];
-  return f ? f(state, action) : state;
+export function reduce<S>(reducers: Reducers<S>, state: S, action: AppAction) {
+  const reducer = reducers[action.type];
+  return reducer ? reducer(state, action as any) : state;
 }
 
 const store = createStore(
