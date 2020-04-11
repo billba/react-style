@@ -2,7 +2,7 @@ export interface Location {
   name: string;
 }
 
-declare module "actions" {
+declare module '@actions' {
 
   interface _AppAction {
     'ToggleLocation': {

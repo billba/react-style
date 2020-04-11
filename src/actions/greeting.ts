@@ -1,4 +1,4 @@
-declare module "actions" {
+declare module '@actions' {
 
   interface _AppAction {
     'ChangeGreeting': {
