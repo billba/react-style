@@ -50,14 +50,14 @@ type NoPayload<T> = {
   [K in keyof T]: keyof T[K] extends never ? K : never
 }[keyof T];
 
-type Payload<T> = Exclude<keyof _AppAction, NoPayload<_AppAction>>;
+type Payload<T> = Exclude<keyof T, NoPayload<T>>;
 
-interface AlternateDispatch {
-  (type: NoPayload<_AppAction>): void;
-  (type: Payload<_AppAction>, payload: _AppAction[typeof type]): void;
+interface AlternateDispatch<T> {
+  (type: NoPayload<T>): void;
+  (type: Payload<T>, payload: T[typeof type]): void;
 }
 
 export const useAlternateDispatch = () => {
-  const dispatch = _useDispatch<Dispatch<AppAction>>();
-  return ((type: any, payload?: any) => dispatch({ type, ... payload})) as AlternateDispatch;
+  const dispatch = _useDispatch();
+  return ((type: any, payload?: any) => dispatch({ type, ... payload})) as AlternateDispatch<_AppAction>;
 }
