@@ -52,12 +52,12 @@ type NoPayload<T> = {
 
 type Payload<T> = Exclude<keyof _AppAction, NoPayload<_AppAction>>;
 
-interface NewDispatch {
+interface AlternateDispatch {
   (type: NoPayload<_AppAction>): void;
   (type: Payload<_AppAction>, payload: _AppAction[typeof type]): void;
 }
 
 export const useAlternateDispatch = () => {
   const dispatch = _useDispatch<Dispatch<AppAction>>();
-  return ((type: any, payload?: any) => dispatch({ type, ... payload})) as NewDispatch;
+  return ((type: any, payload?: any) => dispatch({ type, ... payload})) as AlternateDispatch;
 }
