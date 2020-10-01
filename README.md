@@ -1,6 +1,6 @@
 # React Style Guide
 
-This project illustrates an opinionated approach to writing a Redux/GraphQL React app.
+This project illustrates an opinionated approach to writing a [Redux](#redux)/GraphQL React app.
 
 ## Build & Run
 
